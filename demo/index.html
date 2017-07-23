@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>prism-pagination demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../prism-pagination.html">
+  <link rel="import" href="../prism-circular-pager.html">
+  <link rel="import" href="../prism-square-pager.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+
+    <h3>Basic prism-pagination demo</h3>
+    <demo-snippet>
+      <template>
+        <dom-bind id="basic">
+          <template>
+            <style>
+              prism-pagination a.general {
+                color: black;
+                text-decoration: none;
+                padding: 4px;
+                border: 1px solid rgba(134, 134, 134, 0.3);
+                margin-right: 3px;
+              }
+
+              prism-pagination a.current {
+                background-color: rgba(178, 178, 178, 0.5);
+              }
+            </style>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Page Index</td>
+                  <td><input id="page" type="number" value="{{page::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Page Count</td>
+                  <td><input id="count" type="number" value="{{count::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Range</td>
+                  <td><input id="range" type="number" value="{{range::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Url</td>
+                  <td><input id="url" type="text" value="{{url::input}}" /></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              <prism-pagination page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]" page-click="linkClick">
+                <template slot="first"><a class$="[[css]]" href$="[[url]]">&lt;&lt;</a></template>
+                <template slot="previous"><a class$="[[css]]" href$="[[url]]">&lt;</a></template>
+                <template slot="general"><a class$="[[css]]" href$="[[url]]">[[text]]</a></template>
+                <template slot="current"><a class$="[[css]]">[[text]]</a></template>
+                <template slot="next"><a class$="[[css]]" href$="[[url]]">&gt;</a></template>
+                <template slot="last"><a class$="[[css]]" href$="[[url]]">&gt;&gt;</a></template>
+              </prism-pagination>
+            </p>
+          </template>
+        </dom-bind>
+        <script>
+          let binder = document.querySelector('dom-bind#basic');
+          binder.page = 7;
+          binder.count = 100;
+          binder.range = 5;
+          binder.url = '#/path-to-application/?page=#{page}';
+          binder.linkClick = function (e, data) {
+            alert(`Navigate to ${data.url}`);
+          }
+        </script>
+      </template>
+    </demo-snippet>
+
+    <h3>prism-circular-pager demo</h3>
+    <demo-snippet>
+      <template>
+        <dom-bind id="circular">
+          <template>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Page Index</td>
+                  <td><input id="page" type="number" value="{{page::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Page Count</td>
+                  <td><input id="count" type="number" value="{{count::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Range</td>
+                  <td><input id="range" type="number" value="{{range::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Url</td>
+                  <td><input id="url" type="text" value="{{url::input}}" /></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              <prism-circular-pager page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]"></prism-circular-pager>
+            </p>
+          </template>
+        </dom-bind>
+        <script>
+          binder = document.querySelector('dom-bind#circular');
+          binder.page = 7;
+          binder.count = 100;
+          binder.range = 5;
+          binder.url = '#/path-to-application/?page=#{page}';
+        </script>
+      </template>
+    </demo-snippet>
+
+    <h3>prism-sequare-pager demo</h3>
+    <demo-snippet>
+      <template>
+        <dom-bind id="sequare">
+          <template>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Page Index</td>
+                  <td><input id="page" type="number" value="{{page::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Page Count</td>
+                  <td><input id="count" type="number" value="{{count::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Range</td>
+                  <td><input id="range" type="number" value="{{range::input}}" min="1" /></td>
+                </tr>
+                <tr>
+                  <td>Url</td>
+                  <td><input id="url" type="text" value="{{url::input}}" /></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              <prism-sequare-pager page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]" page-click="linkClick"></prism-sequare-pager>
+            </p>
+          </template>
+        </dom-bind>
+        <script>
+          binder = document.querySelector('dom-bind#sequare');
+          binder.page = 7;
+          binder.count = 100;
+          binder.range = 5;
+          binder.url = '#/path-to-application/?page=#{page}';
+          binder.linkClick = function (e, data) {
+            alert(`Navigate to ${data.url}`);
+          }
+        </script>
+      </template>
+    </demo-snippet>
+
+  </div>
+</body>
+
+</html>
