@@ -1,6 +1,6 @@
 # \<prism-pagination\>
 
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/Prhythm/prism-pagination)
 
 `<prism-pagination>` is a [Polymer 2](http://polymer-project.org/) element provides simple yet fully customisable pagination.
 
