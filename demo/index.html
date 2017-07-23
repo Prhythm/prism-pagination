@@ -128,10 +128,10 @@
       </template>
     </demo-snippet>
 
-    <h3>prism-sequare-pager demo</h3>
+    <h3>prism-square-pager demo</h3>
     <demo-snippet>
       <template>
-        <dom-bind id="sequare">
+        <dom-bind id="square">
           <template>
             <table>
               <tbody>
@@ -154,12 +154,12 @@
               </tbody>
             </table>
             <p>
-              <prism-sequare-pager page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]" page-click="linkClick"></prism-sequare-pager>
+              <prism-square-pager page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]" page-click="linkClick"></prism-square-pager>
             </p>
           </template>
         </dom-bind>
         <script>
-          binder = document.querySelector('dom-bind#sequare');
+          binder = document.querySelector('dom-bind#square');
           binder.page = 7;
           binder.count = 100;
           binder.range = 5;
