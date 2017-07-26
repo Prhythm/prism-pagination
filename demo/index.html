@@ -82,7 +82,7 @@
           binder.range = 5;
           binder.url = '#/path-to-application/?page=#{page}';
           binder.linkClick = function (e, data) {
-            alert(`Navigate to ${data.url}`);
+            document.querySelector('dom-bind#basic').page = data.page;
           }
         </script>
       </template>
