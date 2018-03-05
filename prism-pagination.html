@@ -1,4 +1,4 @@
-<link rel="import" href="/bower_components/polymer/polymer.html" />
+<link rel="import" href="../polymer/polymer-element.html" />
 
 <script>
     'use strict';
@@ -329,7 +329,7 @@
          * @return {Void}
          */
         _render() {
-            let root = this.querySelector(':scope > .root');
+            let root = this.querySelector('.root');
 
             // Create a node as a root for rendering page link
             // For customize styling, shadow dom is not used
@@ -397,7 +397,7 @@
                 item.addEventListener('click', e => {
                     // Disable hyperlink
                     e.preventDefault();
-                    that.dispatchEvent(new CustomEvent('page-changed', {detail: {page: e.target.page.page}}));
+                    that.dispatchEvent(new CustomEvent('page-changed', {detail: {page: e.target.page.page}, bubbles: true, composed: true}));
                 }, false);
             });
             return fragment;
