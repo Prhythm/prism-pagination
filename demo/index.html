@@ -7,21 +7,18 @@
 
   <title>prism-pagination demo</title>
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-  <link rel="import" href="../prism-pagination.html">
-  <link rel="import" href="../prism-circular-pager.html">
-  <link rel="import" href="../prism-square-pager.html">
+  <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../prism-pagination.js"></script>
+  <script type="module" src="../prism-circular-pager.js"></script>
+  <script type="module" src="../prism-square-pager.js"></script>
 
   <custom-style>
-    <style is="custom-style" include="demo-pages-shared-styles">
-
-    </style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </custom-style>
 </head>
-
 <body>
   <div class="vertical-section-container centered">
 
@@ -47,19 +44,19 @@
               <tbody>
                 <tr>
                   <td>Page Index</td>
-                  <td><input id="page" type="number" value="{{page::input}}" min="1" /></td>
+                  <td><input id="page" type="number" value="{{page::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Page Count</td>
-                  <td><input id="count" type="number" value="{{count::input}}" min="1" /></td>
+                  <td><input id="count" type="number" value="{{count::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Range</td>
-                  <td><input id="range" type="number" value="{{range::input}}" min="1" /></td>
+                  <td><input id="range" type="number" value="{{range::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Url</td>
-                  <td><input id="url" type="text" value="{{url::input}}" /></td>
+                  <td><input id="url" type="text" value="{{url::input}}"></td>
                 </tr>
               </tbody>
             </table>
@@ -97,19 +94,19 @@
               <tbody>
                 <tr>
                   <td>Page Index</td>
-                  <td><input id="page" type="number" value="{{page::input}}" min="1" /></td>
+                  <td><input id="page" type="number" value="{{page::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Page Count</td>
-                  <td><input id="count" type="number" value="{{count::input}}" min="1" /></td>
+                  <td><input id="count" type="number" value="{{count::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Range</td>
-                  <td><input id="range" type="number" value="{{range::input}}" min="1" /></td>
+                  <td><input id="range" type="number" value="{{range::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Url</td>
-                  <td><input id="url" type="text" value="{{url::input}}" /></td>
+                  <td><input id="url" type="text" value="{{url::input}}"></td>
                 </tr>
               </tbody>
             </table>
@@ -137,19 +134,19 @@
               <tbody>
                 <tr>
                   <td>Page Index</td>
-                  <td><input id="page" type="number" value="{{page::input}}" min="1" /></td>
+                  <td><input id="page" type="number" value="{{page::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Page Count</td>
-                  <td><input id="count" type="number" value="{{count::input}}" min="1" /></td>
+                  <td><input id="count" type="number" value="{{count::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Range</td>
-                  <td><input id="range" type="number" value="{{range::input}}" min="1" /></td>
+                  <td><input id="range" type="number" value="{{range::input}}" min="1"></td>
                 </tr>
                 <tr>
                   <td>Url</td>
-                  <td><input id="url" type="text" value="{{url::input}}" /></td>
+                  <td><input id="url" type="text" value="{{url::input}}"></td>
                 </tr>
               </tbody>
             </table>
@@ -173,5 +170,4 @@
 
   </div>
 </body>
-
 </html>
