@@ -9,10 +9,10 @@
 <!--
 ```
 <custom-element-demo>
-    <template>
-        <link rel="import" href="prism-circular-pager.html" />
-        <next-code-block></next-code-block>
-    </template>
+  <template>
+    <link rel="import" href="prism-circular-pager.html" />
+    <next-code-block></next-code-block>
+  </template>
 </custom-element-demo>
 ```
 -->
