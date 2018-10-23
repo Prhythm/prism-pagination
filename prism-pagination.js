@@ -95,12 +95,6 @@ class PrismPagination extends PolymerElement {
       },
 
       /**
-      * Method name that provides page click event on dom host.
-      * While click event bind, hyper link will be disabled.
-      */
-      pageClick: String,
-
-      /**
       * Page information
       */
       pageNumber: {
@@ -186,8 +180,7 @@ class PrismPagination extends PolymerElement {
       console.warn(`<prism-pagination> property range is invalid: ${range}`);
     }
 
-    this.style.display = hidden ? 'none' : 'inline'
-    ;
+    this.style.display = hidden ? 'none' : 'inline';
     return hidden;
   }
 
@@ -331,7 +324,7 @@ class PrismPagination extends PolymerElement {
   * @return {Void}
   */
   _render() {
-    let root = this.querySelector(':scope > .root');
+    let root = this.querySelector('.root');
 
     // Create a node as a root for rendering page link
     // For customize styling, shadow dom is not used
@@ -346,30 +339,17 @@ class PrismPagination extends PolymerElement {
       root.removeChild(root.firstChild);
     }
 
-    let templateClass, instance, pageClickHandler;
-
-    // Get click handler
-    if (this.pageClick) {
-      if (typeof (this.pageClick) === 'function') {
-        pageClickHandler = this.pageClick;
-      } else {
-        // Get dom host
-        let host = this.__dataHost._methodHost || this.__dataHost;
-        if (host && host[this.pageClick] && typeof (host[this.pageClick]) === 'function') {
-          pageClickHandler = host[this.pageClick];
-        }
-      }
-    }
+    let templateClass, instance;
 
     // first
     if (this.first && (templateClass = this._getTemplateType('first'))) {
       instance = new templateClass(this.first);
-      root.appendChild(this._bindClickHandler(instance, pageClickHandler, this.first).root);
+      root.appendChild(this._bindClickHandler(instance, this.first).root);
     }
     // previous
     if (this.previous && (templateClass = this._getTemplateType('previous'))) {
       instance = new templateClass(this.previous);
-      root.appendChild(this._bindClickHandler(instance, pageClickHandler, this.previous).root);
+      root.appendChild(this._bindClickHandler(instance, this.previous).root);
     }
     // general & current
     if ((templateClass = this._getTemplateType('general'))) {
@@ -381,18 +361,18 @@ class PrismPagination extends PolymerElement {
         } else {
           instance = new templateClass(page);
         }
-        root.appendChild(this._bindClickHandler(instance, pageClickHandler, page).root);
+        root.appendChild(this._bindClickHandler(instance, page).root);
       });
     }
     // next
     if (this.next && (templateClass = this._getTemplateType('next'))) {
       instance = new templateClass(this.next);
-      root.appendChild(this._bindClickHandler(instance, pageClickHandler, this.next).root);
+      root.appendChild(this._bindClickHandler(instance, this.next).root);
     }
     // last
     if (this.last && (templateClass = this._getTemplateType('last'))) {
       instance = new templateClass(this.last);
-      root.appendChild(this._bindClickHandler(instance, pageClickHandler, this.last).root);
+      root.appendChild(this._bindClickHandler(instance, this.last).root);
     }
   }
 
@@ -400,18 +380,20 @@ class PrismPagination extends PolymerElement {
   * Bind page click event to element
   *
   * @param {DocumentFragment} fragment Document fragment created from template
-  * @param {Function} handler Page click event handler
   * @param {Object} data Page information
   * @return {DocumentFragment}
   */
-  _bindClickHandler(fragment, handler, data) {
-    if (!handler) return fragment;
+  _bindClickHandler(fragment, data) {
     // Bind event handler where `general` class is applied
+    let that = this;
     Array.prototype.forEach.call(fragment.root.querySelectorAll('.general'), (item) => {
+      item.page = data;
       item.addEventListener('click', e => {
         // Disable hyperlink
         e.preventDefault();
-        return handler.call(item, e, data);
+        that.dispatchEvent(new CustomEvent('page-changed', {
+          detail: {page: e.target.page.page
+        }, bubbles: true, composed: true}));
       }, false);
     });
     return fragment;
