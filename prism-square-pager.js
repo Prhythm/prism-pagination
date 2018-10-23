@@ -1,5 +1,4 @@
 import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
-import '@polymer/polymer/polymer-legacy.js';
 import './prism-pagination.js';
 
 /**

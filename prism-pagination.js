@@ -1,6 +1,5 @@
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {templatize} from '@polymer/polymer/lib/utils/templatize.js';
-import '@polymer/polymer/polymer-legacy.js';
 
 /**
  * `<prism-pagination>` is a [Polymer 3](http://polymer-project.org/) element provides simple yet fully customisable pagination.
