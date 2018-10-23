@@ -1,7 +1,7 @@
 {
   "description": "Web component based on Polymer 3, pagination with material design.",
   "name": "@polymer/prism-pagination",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "prism-pagination.js",
   "resolutions": {
     "inherits": "2.0.3",
