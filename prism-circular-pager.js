@@ -84,7 +84,7 @@ class PrismCircularPager extends PolymerElement {
         }
       </style>
 
-      <prism-pagination page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]" hide-first="[[hideFirst]]" hide-last="[[hideLast]]" hide-previous="[[hidePrevious]]" hide-next="[[hideNext]]" hidden="{{hidden}}" page-click="[[_pageClickHandler(pageClick)]]">
+      <prism-pagination page="[[page]]" count="[[count]]" range="[[range]]" url="[[url]]" hide-first="[[hideFirst]]" hide-last="[[hideLast]]" hide-previous="[[hidePrevious]]" hide-next="[[hideNext]]" hidden="{{hidden}}" on-page-changed="_pageChanged">
         <template slot="first"><a class$="[[css]]" href$="[[url]]">[[firstText]]</a></template>
         <template slot="previous"><a class$="[[css]]" href$="[[url]]">[[previousText]]</a></template>
         <template slot="general"><a class$="[[css]]" href$="[[url]]">[[text]]</a></template>
@@ -190,29 +190,12 @@ class PrismCircularPager extends PolymerElement {
       hidden: {
         type: Boolean,
         reflectToAttribute: true
-      },
-
-      /**
-      * Method name that provides page click event on dom host.
-      * While click event bind, hyper link will be disabled.
-      */
-      pageClick: String
-    }
+      }
+    };
   }
 
-  /**
-  * Pass host method to pagination element
-  *
-  * @param {String} pageClick Dom host method name
-  * @return {Function} Dom host method
-  */
-  _pageClickHandler(pageClick) {
-    // Get dom host
-    let host = this.__dataHost._methodHost || this.__dataHost;
-    if (host && host[pageClick] && typeof (host[pageClick]) === 'function') {
-      return host[pageClick];
-    }
-    return null;
+  _pageChanged(event) {
+    this.dispatchEvent(new CustomEvent('page-changed', event));
   }
 }
 
